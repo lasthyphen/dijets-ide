@@ -1,0 +1,123 @@
+{
+    "name": "ide",
+    "version": "0.1.0",
+    "description": "Dijets IDE for VSCode",
+    "publisher": "dijets",
+    "displayName": "Dijets IDE",
+    "categories": [
+        "Programming Languages",
+        "Snippets",
+        "Other"
+    ],
+    "engines": {
+        "vscode": "^1.43.0"
+    },
+    "activationEvents": [
+        "onLanguage:move"
+    ],
+    "main": "./dist/extension.js",
+    "contributes": {
+        "commands": [{
+                "command": "dijets.check",
+                "title": "Dijets: Check"
+            },
+            {
+                "command": "dijets.clean",
+                "title": "Dijets: Clean"
+            },
+            {
+                "command": "dijets.doctor",
+                "title": "Dijets: Doctor"
+            },
+            {
+                "command": "dijets.testFunctional",
+                "title": "Dijets: Test Functional"
+            },
+            {
+                "command": "dijets.publish",
+                "title": "Dijets: Publish"
+            },
+            {
+                "command": "dijets.run",
+                "title": "Dijets: Run"
+            },
+            {
+                "command": "dijets.testUnit",
+                "title": "Dijets: Test Unit"
+            },
+            {
+                "command": "dijets.publishAll",
+                "title": "Dijets: Publish All"
+            }
+        ],
+        "configuration": {
+            "title": "Dijets IDE",
+            "properties": {
+                "dijets.buildDirectory": {
+                    "type": "string",
+                    "default": "build",
+                    "description": "Directory to store build artifacts"
+                },
+                "dijets.storageDirectory": {
+                    "type": "string",
+                    "default": "storage",
+                    "description": "Directory to store chain storage"
+                },
+                "dijets.mode": {
+                    "type": "string",
+                    "enum": [
+                        "stdlib"
+                    ],
+                    "default": "stdlib",
+                    "description": "Mode to use when running move-cli"
+                },
+                "dijets.dijetsRPC": {
+                    "type": "string",
+                    "default": "http://main.seed.dijets.org:9850",
+                    "description": "Dijets chain RPC to access"
+                }
+            }
+        }
+    },
+    "scripts": {
+        "vscode:prepublish": "rm bin/*; npm run compile",
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+ssh://git@github.com/damirka/dijets-ide.git"
+    },
+    "keywords": [
+        "libra",
+        "move",
+        "ide",
+        "move syntax",
+        "move ide",
+        "move-ide",
+        "libra-ide",
+        "diem",
+        "diem-ide",
+        "dijets",
+        "dijets-ide"
+    ],
+    "author": "Dijets Team <dijets.org>",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/dijets/dijets-ide/issues"
+    },
+    "homepage": "https://github.com/dijets/dijets-ide#readme",
+    "extensionDependencies": [
+        "damirka.move-syntax"
+    ],
+    "devDependencies": {
+        "@types/node": "^14.0.1",
+        "@types/vscode": "^1.43.0",
+        "standard-version": "^8.0.2",
+        "typescript": "^3.9.10",
+        "vsce": "^1.77.0"
+    },
+    "dependencies": {
+        "unzipper": "^0.10.11"
+    }
+}
